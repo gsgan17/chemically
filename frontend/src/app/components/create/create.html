@@ -1,0 +1,14 @@
+<p>create works!</p>
+
+<form [formGroup]="editForm" (submit)="editFinally()">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="form-name">
+
+    <label for="image">Image</label>
+    <input type="url" formControlName="image" id="form-image">
+
+    <label for="description">Description</label>
+    <input type="text" formControlName="description" id="form-description">
+
+    <button type="submit" class="primary">Confirm</button>
+</form>

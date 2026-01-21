@@ -1,0 +1,6 @@
+<section class="card">
+    <img id="card-image" [src]="compound.image" alt="image of {{compound.name}}" height="50px" width="50px">
+    <h2 id="card-name">{{compound.name}}</h2>
+    <button (click)="openDetails()">learn more</button>
+    <button (click)="deleteCompound(compound.id)">Delete Compound</button>
+</section>

@@ -1,0 +1,7 @@
+<div class="box">
+    <button (click)="navigateToCreate()">Create A New Compound</button>
+    <app-compound *ngFor="let compound of compounds" [compound]="compound"></app-compound>
+    <h1>Page = {{page}}</h1>
+    <button (click)="prevPage()">PrevPage</button>
+    <button (click)="nextPage()">NextPage</button>
+</div>

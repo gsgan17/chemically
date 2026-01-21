@@ -1,0 +1,142 @@
+/* gallery.css
+   Paste this into your gallery component (or global) stylesheet.
+   - Uses CSS Grid to display <app-compound> cards in a responsive grid.
+   - Keeps your existing HTML (no markup changes required).
+   - Default: 4 cards per row on wide screens, then 3 / 2 / 1 on smaller screens.
+   - The "Create" button and the Page heading span the full width.
+*/
+
+/* easy theme vars */
+:root{
+  --gap: 16px;
+  --pad: 16px;
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 8px;
+  --btn-pad: 8px 12px;
+  --card-max-width: 320px; /* card width inside each grid cell */
+}
+
+/* .box becomes a grid container */
+.box {
+  box-sizing: border-box;
+  padding: var(--pad);
+  display: grid;
+  gap: var(--gap);
+  /* 4 equal columns by default */
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+  width: 100%;
+  justify-items: stretch;
+  background: transparent;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Make the first button (Create) span the full width */
+.box > button:first-child {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: var(--btn-pad);
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid rgba(37,99,235,0.12);
+  border-radius: var(--radius);
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+/* Style all other top-level buttons (pagination) so they are visible */
+.box > button {
+  /* basic visible button for any top-level buttons */
+  padding: var(--btn-pad);
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Ensure app-compound elements occupy grid cells in source order */
+.box > app-compound {
+  display: flex;               /* center the inner card */
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Constrain the inner card width so 4-per-row looks balanced.
+   This targets the common case where <app-compound> contains a .card element. */
+.box > app-compound .card,
+.box > app-compound > * {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: 0 auto; /* center inside the grid cell */
+}
+
+/* Make the Page heading span full width and center it */
+.box > h1 {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: 8px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+
+/* The last two buttons (PrevPage / NextPage) appear after the H1 in the source.
+   They'll automatically fill the next grid cells. Center them inside their cells. */
+.box > button:nth-last-child(2),
+.box > button:last-child {
+  justify-self: center;
+  min-width: 100px;
+}
+
+/* Give a small visual affordance on hover/focus */
+.box > button:hover { transform: translateY(-2px); }
+.box > button:focus-visible {
+  outline: 3px solid rgba(37,99,235,0.12);
+  outline-offset: 2px;
+}
+
+/* Responsive breakpoints: degrade columns gracefully */
+@media (max-width: 1100px) {
+  .box { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+  .box { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .box {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  /* Make the create button full-width on tiny screens */
+  .box > button:first-child {
+    width: 100%;
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  /* Put pagination buttons side-by-side visually by making them narrower */
+  .box > button:nth-last-child(2),
+  .box > button:last-child {
+    width: 48%;
+    box-sizing: border-box;
+  }
+
+  /* Keep the page heading full width */
+  .box > h1 { width: 100%; }
+}
+
+/* Small accessibility helper: ensure app-compound contents remain visible if text wraps */
+.box > app-compound .card {
+  word-break: break-word;
+}

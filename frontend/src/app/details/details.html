@@ -1,0 +1,8 @@
+<p>details works!</p>
+
+<section class="details">
+    <img id="details-image" [src]="compound.image" alt="image of {{compound.name}}" height="50px" width="50px">
+    <h2 id="details-name">{{compound.name}}</h2>
+    <p id="details-description">{{compound.description}}</p>
+    <button (click)="navigateToEdit()">Edit Compound Details</button>
+</section>
