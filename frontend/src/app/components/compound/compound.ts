@@ -27,5 +27,6 @@ export class Compound {
       console.log(response);
     });
     console.log("compound deleted");
+    alert("Compound Deleted");
   }
 }

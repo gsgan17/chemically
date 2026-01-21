@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterModule, Router, ActivatedRoute, Route, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './header.css',
 })
 export class Header {
+  router : Router = inject(Router);
+  constructor(){
 
+  }
+
+  navigateToCreate(){
+    this.router.navigate(['create']);
+  }
 }

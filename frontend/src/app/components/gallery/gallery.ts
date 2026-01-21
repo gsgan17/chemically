@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Compound } from '../compound/compound';
 import { CompoundInfo } from '../../interfaces/compound-info';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router, RouterModule, RouterLink } from '@angular/route
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
 })
-export class Gallery {
+export class Gallery implements OnInit {
   route : ActivatedRoute = inject(ActivatedRoute);
   router : Router = inject(Router);
   compounds : CompoundInfo[] = [];
@@ -20,11 +20,16 @@ export class Gallery {
 
   page : number = Number(this.route.snapshot.paramMap.get('id'));
 
-  constructor(){
+  ngOnInit(): void {
+    console.log("reload");
     this.compoundService.getAllCompounds(this.page).subscribe((paginatedData)=>{
       console.log(paginatedData);
       this.compounds = paginatedData as CompoundInfo[];
     });
+  }
+
+  constructor(){
+    
   }
 
   nextPage(){
@@ -33,12 +38,14 @@ export class Gallery {
     if(this.compounds.length===0){
       this.router.navigate(['page/1']);
     }
+    // this.ngOnInit;
   }
 
   prevPage(){
     this.page--;
     this.page = Math.max(this.page, 1);
     this.router.navigate(['page/',this.page]);
+    // this.ngOnInit();
   }
 
   navigateToCreate(){

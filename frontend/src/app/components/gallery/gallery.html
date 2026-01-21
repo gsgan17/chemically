@@ -1,4 +1,5 @@
 <div class="box">
+    <br>
     <button (click)="navigateToCreate()">Create A New Compound</button>
     <app-compound *ngFor="let compound of compounds" [compound]="compound"></app-compound>
     <h1>Page = {{page}}</h1>

@@ -54,5 +54,6 @@ export class Edit implements OnInit {
       console.log(response);
     });
     this.router.navigate(['details/', this.id]);
+    alert("compound edited");
   }
 }

@@ -63,5 +63,6 @@ export class Create implements OnInit {
       console.log(response);
     });
     this.router.navigate(['page/1']);
+    alert("Compound Created");
   }
 }

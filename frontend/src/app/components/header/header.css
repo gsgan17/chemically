@@ -1,0 +1,26 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes button to far right */
+  padding: 12px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* left group */
+.site-header .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* login button */
+.site-header .header-btn {
+  margin-left: auto; /* extra safety */
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  font-weight: 700;
+  cursor: pointer;
+}

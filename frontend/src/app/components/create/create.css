@@ -1,0 +1,44 @@
+form {
+  max-width: 480px;
+  margin: 24px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+/* Labels */
+label {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* Inputs */
+input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Submit button */
+button.primary {
+  margin-top: 16px;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Keep button visible on small screens */
+@media (max-width: 480px) {
+  form {
+    margin: 12px;
+    padding: 16px;
+  }
+
+  button.primary {
+    width: 100%;
+  }
+}
