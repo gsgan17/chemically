@@ -34,9 +34,13 @@ export class Gallery implements OnInit {
 
   nextPage(){
     this.page++;
-    this.router.navigate(['page/',this.page]);
+    this.router.navigate(['page/',this.page]).then(()=>{
+      window.location.reload();
+    });
     if(this.compounds.length===0){
-      this.router.navigate(['page/1']);
+      this.router.navigate(['page/1']).then(()=>{
+        window.location.reload();
+      });
     }
     // this.ngOnInit;
   }
@@ -44,11 +48,15 @@ export class Gallery implements OnInit {
   prevPage(){
     this.page--;
     this.page = Math.max(this.page, 1);
-    this.router.navigate(['page/',this.page]);
+    this.router.navigate(['page/',this.page]).then(()=>{
+      window.location.reload();
+    });
     // this.ngOnInit();
   }
 
   navigateToCreate(){
-    this.router.navigate(['create']);
+    this.router.navigate(['create']).then(()=>{
+      window.location.reload();
+    });
   }
 }

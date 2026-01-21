@@ -53,7 +53,9 @@ export class Edit implements OnInit {
     this.compoundService.updateCompound(this.editedCompound)?.subscribe((response)=>{
       console.log(response);
     });
-    this.router.navigate(['details/', this.id]);
+    this.router.navigate(['details/', this.id]).then(()=>{
+      window.location.reload();
+    });
     alert("compound edited");
   }
 }

@@ -19,7 +19,9 @@ export class Compound {
   }
 
   openDetails(){
-    this.router.navigate(['details/',this.compound.id]);
+    this.router.navigate(['details/',this.compound.id]).then(()=>{
+      window.location.reload();
+    });;
   }
 
   deleteCompound(id : number){

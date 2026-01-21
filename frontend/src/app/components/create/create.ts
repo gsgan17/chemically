@@ -62,7 +62,9 @@ export class Create implements OnInit {
     this.compoundService.createCompound(this.editedCompound).subscribe((response)=>{
       console.log(response);
     });
-    this.router.navigate(['page/1']);
+    this.router.navigate(['page/1']).then(()=>{
+      window.location.reload();
+    });
     alert("Compound Created");
   }
 }

@@ -30,6 +30,8 @@ export class Details {
   }
 
   navigateToEdit(){
-    this.router.navigate(['edit/', this.id]);
+    this.router.navigate(['edit/', this.id]).then(()=>{
+      window.location.reload();
+    });;
   }
 }
