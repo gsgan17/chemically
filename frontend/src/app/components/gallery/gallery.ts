@@ -21,10 +21,14 @@ export class Gallery implements OnInit {
   page : number = Number(this.route.snapshot.paramMap.get('id'));
 
   ngOnInit(): void {
-    console.log("reload");
     this.compoundService.getAllCompounds(this.page).subscribe((paginatedData)=>{
       console.log(paginatedData);
       this.compounds = paginatedData as CompoundInfo[];
+      if(this.compounds.length===0){
+        this.router.navigate(['page/1']).then(()=>{
+          window.location.reload();
+        });
+      }
     });
   }
 

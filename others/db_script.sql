@@ -10,6 +10,10 @@ show tables;
 
 use chemically;
 
+-- local-infile = 1;
+
+SET GLOBAL local_infile = ON;
+
 LOAD DATA LOCAL INFILE 'E:/Dev/Chemically/others/compound  (1) (2).csv'
 INTO TABLE compounds
 CHARACTER SET utf8mb4
